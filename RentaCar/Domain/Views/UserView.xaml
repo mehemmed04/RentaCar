@@ -5,11 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentaCar.Domain.Views"
         mc:Ignorable="d"
-        Title="UserView" Height="450" Width="800">
+        Title="UserView" Height="470" Width="800">
     <StackPanel>
         <ListView
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            HorizontalAlignment="Center"
+            Height="400"
+            BorderThickness="0"
+            Margin="0,20,0,10"
+            Background="Transparent"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
             ItemsSource="{Binding Cars,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-            
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <StackPanel Width="150"
+                                Margin="10,5"
+                                    Height="170">
+                        <Image Source="{Binding ImagePath}"
+                               Width="150"
+                               Height="100"></Image>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="16"
+                            Text="{Binding Vendor}"></TextBlock>
+                       <TextBlock FontSize="16" Margin="4,0"
+                            Text="{Binding Model}"></TextBlock>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="16"
+                            Text="{Binding PricePerDay}"></TextBlock>
+                            <TextBlock Margin="4,0" FontSize="16"> AZN</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel  Orientation="Horizontal">
+                            <TextBlock FontSize="16" Text="{Binding SeatCount}"></TextBlock>
+                            <TextBlock FontSize="16" Margin="4,0"> seats</TextBlock>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
         </ListView>
     </StackPanel>
 </Window>
