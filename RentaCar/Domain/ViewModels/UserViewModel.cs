@@ -9,6 +9,7 @@ namespace RentaCar.Domain.ViewModels
 {
     public class UserViewModel:BaseViewModel
     {
+        public int UserId { get; set; }
         private List<Car> cars;
 
         public List<Car> Cars
@@ -16,9 +17,10 @@ namespace RentaCar.Domain.ViewModels
             get { return cars; }
             set { cars = value; OnPropertyChanged(); }
         }
-        public UserViewModel()
+        public UserViewModel(int userId)
         {
             Cars = App.DB.CarRepository.GetAll().ToList();
+            UserId = userId;
         }
     }
 }

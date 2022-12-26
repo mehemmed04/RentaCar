@@ -40,7 +40,7 @@ namespace RentaCar.Domain.ViewModels
                 {
                     if (user.Passsword == Password)
                     {
-                        UserViewModel uvm = new UserViewModel();
+                        UserViewModel uvm = new UserViewModel(user.Id);
                         UserView uv = new UserView();
                         uv.DataContext = uvm;
                         uv.Show();
