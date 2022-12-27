@@ -25,7 +25,12 @@ namespace RentaCar.DataAccess.Concretes
 
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var sql = @"SELECT * FROM Users WHERE Id=@id";
+                var user = conn.QueryFirstOrDefault<User>(sql, new {id=id});
+                return user;
+            }
         }
 
         private string ConnectionString { get; set; }

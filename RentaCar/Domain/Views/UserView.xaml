@@ -69,6 +69,7 @@
             Margin="0,20,0,10"
             Background="Transparent"
             ScrollViewer.VerticalScrollBarVisibility="Visible"
+            SelectedItem="{Binding RentedSelectedCar,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             ItemsSource="{Binding RentedCars,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                     <ListView.ItemTemplate>
                         <DataTemplate >
@@ -109,8 +110,10 @@
                 </ListView>
             </StackPanel>
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            
         <Border
-            Margin="0,10"
+            Margin="30,10"
             BorderBrush="Green"
             BorderThickness="1"
             Height="50"
@@ -120,5 +123,17 @@
                 Command="{Binding RentCommand}">RENT A SELECTED CAR</Button>
         </Border>
 
+
+            <Border Margin="160,0"
+            BorderBrush="Green"
+            BorderThickness="1"
+            Height="50"
+            Width="300">
+
+                <Button FontSize="22" FontWeight="Bold"
+                Command="{Binding ReturnSelectedCarCommand}">RETURN A SELECTED CAR</Button>
+            </Border>
+
+        </StackPanel>
     </StackPanel>
 </Window>

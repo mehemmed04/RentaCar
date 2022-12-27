@@ -30,7 +30,7 @@ CREATE TABLE Cars(
 GO
 INSERT INTO Users([Username],[Passsword],[Email])
 VALUES ('mehemmed','12345','mehemmedbayramov2004@gmail.com'),
- ('elvin','12345','mmmmmmmm@gmail.com'),
+ ('hebib','12345','habibaliyev044@gmail.com'),
 ('nurlan','12345','nurlan.shirinov1998@gmail.com')
 
 GO

@@ -15,13 +15,13 @@ namespace RentaCar.Services
         {
             try
             {
-                string fromEmail = "mehemmedbayramov2004@gmail.com";
+                string fromEmail = "cooding002@gmail.com";
                 MailMessage mailMessage = new MailMessage(fromEmail, receiver, "Rented Succesfully", body);
                 mailMessage.IsBodyHtml = true;
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
                 smtpClient.EnableSsl = true;
                 smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential(fromEmail, "hbsdpwwjtugwjvrg");
+                smtpClient.Credentials = new NetworkCredential(fromEmail, "kxndtkcoktskhvrt");
                 smtpClient.Send(mailMessage);
             }
             catch (Exception ex)
