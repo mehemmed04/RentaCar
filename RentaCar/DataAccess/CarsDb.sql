@@ -2,11 +2,12 @@
 GO
 USE RentACarDb
 GO
-
+drop table Users
 CREATE TABLE Users(
 [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 [Username] NVARCHAR(MAX) NOT NULL,
-[Passsword] NVARCHAR(MAX) NOT NULL
+[Passsword] NVARCHAR(MAX) NOT NULL,
+[Email] NVARCHAR(MAX) NOT NULL
 )
 GO
 
@@ -27,10 +28,10 @@ CREATE TABLE Cars(
 [UserId] INT FOREIGN KEY REFERENCES Users([Id])
 )
 GO
-INSERT INTO Users([Username],[Passsword])
-VALUES ('mehemmed','12345'),
- ('elvin','12345'),
-('nurlan','12345')
+INSERT INTO Users([Username],[Passsword],[Email])
+VALUES ('mehemmed','12345','mehemmedbayramov2004@gmail.com'),
+ ('elvin','12345','mmmmmmmm@gmail.com'),
+('nurlan','12345','nurlan.shirinov1998@gmail.com')
 
 GO
 INSERT INTO Admins([Username],[Passsword])

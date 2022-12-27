@@ -11,6 +11,7 @@ namespace RentaCar.DataAccess.Entities
         public int Id { get; set; }
         public string Username { get; set; }
         public string Passsword { get; set; }
+        public string Email { get; set; }
         public override string ToString()
         {
             return Username;

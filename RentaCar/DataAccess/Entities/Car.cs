@@ -14,7 +14,7 @@ namespace RentaCar.DataAccess.Entities
         public string ImagePath { get; set; }
         public decimal PricePerDay { get; set; }
         public int SeatCount { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public virtual User User { get; set; }
     }
 }

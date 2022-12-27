@@ -25,7 +25,12 @@ namespace RentaCar.DataAccess.Concretes
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var sql = @"DELETE FROM Cars
+                        WHERE Id=@id";
+                conn.Execute(sql, new { id = id });
+            }
         }
 
         public Car Get(int id)
@@ -45,7 +50,13 @@ namespace RentaCar.DataAccess.Concretes
 
         public void Update(Car data)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                var sql = @"Update Cars 
+                        SET Vendor=@vendor, Model =@model, PricePerDay=@price, SeatCount =@scount, UserId=@userid
+                        WHERE Id=@id";
+                conn.Execute(sql, new {id=data.Id,vendor=data.Vendor,model=data.Model,price=data.PricePerDay,scount=data.SeatCount,userid =data.UserId});
+            }
         }
     }
 }

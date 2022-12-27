@@ -9,11 +9,125 @@
     <StackPanel Orientation="Horizontal">
         <StackPanel Width="400">
             <ListView
-                Height="400"
-                ItemsSource="{Binding Cars,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            HorizontalAlignment="Center"
+            Height="400"
+            BorderThickness="0"
+            Margin="0,20,0,10"
+            Background="Transparent"
+            SelectedItem="{Binding SelectedCar,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ItemsSource="{Binding Cars,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <StackPanel Width="150"
+                                Margin="10,5"
+                                    Height="170">
+                            <Image Source="{Binding ImagePath}"
+                               Width="150"
+                               Height="100"></Image>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="16"
+                            Text="{Binding Vendor}"></TextBlock>
+                                <TextBlock FontSize="16" Margin="4,0"
+                            Text="{Binding Model}"></TextBlock>
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="16"
+                            Text="{Binding PricePerDay}"></TextBlock>
+                                <TextBlock Margin="4,0" FontSize="16"> AZN</TextBlock>
+                            </StackPanel>
+
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock FontSize="16" Text="{Binding SeatCount}"></TextBlock>
+                                <TextBlock FontSize="16" Margin="4,0"> seats</TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
             </ListView>
+
         </StackPanel>
-        <StackPanel Width="400">
+        <StackPanel Width="400" Margin="10">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,5">
+                <TextBlock Width="100" FontSize="14">Vendor : </TextBlock>
+                <TextBox Width="200"  FontSize="14" Text="{Binding SelectedCar.Vendor}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                         Margin="0,5">
+                <TextBlock  Width="100" FontSize="14">Model :</TextBlock>
+                <TextBox Width="200"   FontSize="14" Text="{Binding SelectedCar.Model}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                         Margin="0,5">
+                <TextBlock  Width="100" FontSize="14">Price per day :</TextBlock>
+                <TextBox Width="200"   FontSize="14" Text="{Binding SelectedCar.PricePerDay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                         Margin="0,5">
+                <TextBlock  Width="100" FontSize="14">Seat count : </TextBlock>
+                <TextBox Width="200"   FontSize="14" Text="{Binding SelectedCar.SeatCount}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                         Margin="0,5">
+                <TextBlock  Width="100" FontSize="14">User Id :</TextBlock>
+                <TextBox Width="200"   FontSize="14" Text="{Binding SelectedCar.UserId}"></TextBox>
+            </StackPanel>
+            <Image Width="200"
+                   Height="150"
+                   Source="{Binding SelectedCar.ImagePath}">
+                
+            </Image>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,15">
+                <Border BorderBrush="Green"
+                        BorderThickness="1"
+                        Width="100"
+                        Margin="10,0">
+                    <Button FontSize="18"
+                            FontWeight="Bold"
+                            Command="{Binding AddCommand}">Add</Button>
+                    
+                </Border>
+                <Border BorderBrush="Orange"
+                        BorderThickness="1"
+                        Width="100"
+                        Margin="10,0">
+                    <Button FontSize="18"
+                            FontWeight="Bold"
+                            Command="{Binding UpdateCommand}">Update</Button>
+                </Border>
+                <Border BorderBrush="Red"
+                        BorderThickness="1"
+                        Width="100"
+                        Margin="10,0">
+                    <Button FontSize="18"
+                            FontWeight="Bold"
+                            Command="{Binding DeleteCommand}">Delete</Button>
+                </Border>
+            </StackPanel>
+
+            <StackPanel>
+                <Border BorderBrush="Black"
+                        BorderThickness="1"
+                        Width="160"
+                        Margin="10,0">
+                    <Button FontSize="20"
+                            FontWeight="Bold"
+                            Command="{Binding ShowRentsCommand}">Show Rents</Button>
+                </Border>
+            </StackPanel>
             
         </StackPanel>
     </StackPanel>
