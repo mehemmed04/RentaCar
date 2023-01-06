@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Domain\ViewModels\EmailAuthentificationWiewModel.cs" />
+    <Compile Include="Domain\Views\EmailAuthentificationWindow.xaml.cs">
+      <DependentUpon>EmailAuthentificationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\EmailService.cs" />
     <Page Include="Domain\Dictionaries\ButtonDictionary.xaml">
       <SubType>Designer</SubType>
@@ -69,6 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Domain\Views\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Domain\Views\EmailAuthentificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

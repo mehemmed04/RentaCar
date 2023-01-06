@@ -1,5 +1,6 @@
 ﻿using RentaCar.DataAccess.Entities;
 using RentaCar.Domain.Commands;
+using RentaCar.Domain.Views;
 using RentaCar.Services;
 using System;
 using System.Collections.Generic;
@@ -53,15 +54,34 @@ namespace RentaCar.Domain.ViewModels
             RentedCars = App.DB.CarRepository.GetAll().Where((c) => { return c.UserId == UserId; }).ToList();
             RentCommand = new RelayCommand((o) =>
             {
-                string carname =  SelectedCar.Vendor + ' '+  SelectedCar.Model;
-                SelectedCar.UserId = UserId;
-                App.DB.CarRepository.Update(SelectedCar);
-                Cars = App.DB.CarRepository.GetAll().Where((c) => { return c.UserId == null; }).ToList();
-                RentedCars = App.DB.CarRepository.GetAll().Where((c) => { return c.UserId == UserId; }).ToList();
-                MessageBox.Show("Rented");
-                string body = $"You rented {carname} succesfully";
+                string carname = SelectedCar.Vendor + ' ' + SelectedCar.Model;
+                Random r = new Random();
+                int c1 = r.Next(10000, 99999);
+                string code = c1.ToString();
+
                 var user = App.DB.UserRepository.Get(UserId);
-                EmailService.SendEmail(user.Email,body);
+                string body = $"Your code : {code}";
+                EmailService.SendEmail(user.Email, body);
+
+                EmailAuthentificationWindow ev = new EmailAuthentificationWindow();
+                EmailAuthentificationWiewModel ewm = new EmailAuthentificationWiewModel(ev, code);
+                ev.DataContext = ewm;
+                ev.ShowDialog();
+
+                if (ewm.HasAuthentification)
+                {
+                    SelectedCar.UserId = UserId;
+                    App.DB.CarRepository.Update(SelectedCar);
+                    Cars = App.DB.CarRepository.GetAll().Where((c) => { return c.UserId == null; }).ToList();
+                    RentedCars = App.DB.CarRepository.GetAll().Where((c) => { return c.UserId == UserId; }).ToList();
+                    MessageBox.Show("Rented");
+                    body = $"You rented {carname} succesfully";
+                    EmailService.SendEmail(user.Email, body);
+                }
+                else
+                {
+                    MessageBox.Show("You have to authorize your email");
+                }
 
             });
             ReturnSelectedCarCommand = new RelayCommand((o) =>

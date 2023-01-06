@@ -1,0 +1,93 @@
+﻿<Window x:Class="RentaCar.Domain.Views.EmailAuthentificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentaCar.Domain.Views"
+        mc:Ignorable="d"
+        Title="EmailAuthentificationWindow" Height="300" Width="400">
+    <StackPanel>
+        <TextBlock
+            FontSize="22"
+            HorizontalAlignment="Center"
+            FontWeight="Bold"
+            Margin="0,20"
+            >
+            Enter Code :
+        </TextBlock>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,20">
+            <TextBox
+                HorizontalAlignment="Center"
+                Text="{Binding Code1}"
+                FontSize="25"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black"
+                Margin="20,0"
+                Width="40"></TextBox>
+
+            <TextBox
+                 HorizontalAlignment="Center"
+                Text="{Binding Code2}"
+                FontSize="25"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black"
+                Margin="20,0"
+                Width="40"></TextBox>
+
+            <TextBox
+                 HorizontalAlignment="Center"
+                Text="{Binding Code3}"
+                FontSize="25"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black"
+                Margin="20,0"
+                Width="40"></TextBox>
+
+            <TextBox
+                 HorizontalAlignment="Center"
+                Text="{Binding Code4}"
+                FontSize="25"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black"
+                Margin="20,0"
+                Width="40"></TextBox>
+
+            <TextBox
+                 HorizontalAlignment="Center"
+                Text="{Binding Code5}"
+                FontSize="25"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black"
+                Margin="20,0"
+                Width="40"></TextBox>
+
+        </StackPanel>
+        <Border
+             Margin="0,20"
+            BorderBrush="Red"
+            BorderThickness="1"
+            CornerRadius="20"
+            Width="75">
+            <Button        
+                Command="{Binding CheckCommand}"
+                Margin="5"
+            Content="CHECK"
+                FontSize="16"
+                FontWeight="DemiBold"
+            >
+            </Button>
+        </Border>
+
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="15"
+                   Foreground="Red"
+                   FontStyle="Italic"
+                   Text="{Binding IncorrectCode}"
+                   FontWeight="Heavy">
+            
+        </TextBlock>
+        
+    </StackPanel>
+</Window>
